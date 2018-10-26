@@ -1,0 +1,16 @@
+services:
+#    admin.example:
+#        class: AdminBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    admin.news:
+        class: AdminBundle\Admin\NewsAdmin
+        arguments: [~, AppBundle\Entity\NewsItem, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: News }
+        public: true
+    admin.image:
+          class: AdminBundle\Admin\ImageAdmin
+          arguments: [~, AppBundle\Entity\Image, ~]
+          tags:
+              - { name: sonata.admin, manager_type: orm, show_in_dashboard: false }
+          public: false
