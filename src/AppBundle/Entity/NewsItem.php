@@ -2,8 +2,10 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping\JoinTable;
 
 /**
  * NewsItem
@@ -53,6 +55,21 @@ class NewsItem
 
 
     /**
+     * @var ArrayCollection
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="news")
+     * @JoinTable(name="news_item_tag")
+     */
+    private $tags;
+
+
+    public function __construct()
+    {
+        if($this->tags === null) {
+            $this->tags = new ArrayCollection();
+        }
+    }
+
+    /**
      * Get id.
      *
      * @return int
@@ -60,6 +77,51 @@ class NewsItem
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get tags
+     *
+     * @return ArrayCollection
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * Add tag
+     * @param Tag $tag
+     * @return $this
+     */
+    public function addTag(Tag $tag)
+    {
+        $this->tags->add($tag);
+
+        return $this;
+    }
+
+    /**
+     * Set tags
+     * @param ArrayCollection $tags
+     * @return $this
+     */
+    public function setTags(ArrayCollection $tags)
+    {
+        $this->tags = $tags;
+        return $this;
+    }
+
+    /**
+     * Remove tag
+     * @param Tag $tag
+     * @return $this
+     */
+    public function removeTag(Tag $tag)
+    {
+        $this->tags->removeElement($tag);
+
+        return $this;
     }
 
     /**

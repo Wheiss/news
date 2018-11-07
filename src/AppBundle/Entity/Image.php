@@ -108,6 +108,11 @@ class Image
         return $this->file;
     }
 
+    public function getUrl()
+    {
+        return '/' . self::PATH_TO_IMAGE_FOLDER . $this->file;
+    }
+
     /**
      * Uploads file
      */
@@ -173,5 +178,10 @@ class Image
     public function refreshUpdated()
     {
         $this->setUpdated(new \DateTime());
+    }
+
+    public function __toString()
+    {
+        return $this->getFile();
     }
 }

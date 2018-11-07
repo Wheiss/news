@@ -8,9 +8,24 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: News }
         public: true
+        calls:
+              - [ setTranslationDomain, [AppBundle]]
     admin.image:
           class: AdminBundle\Admin\ImageAdmin
           arguments: [~, AppBundle\Entity\Image, ~]
           tags:
               - { name: sonata.admin, manager_type: orm, show_in_dashboard: false }
           public: false
+    admin.tags:
+          class: AdminBundle\Admin\TagsAdmin
+          arguments: [~, AppBundle\Entity\Tag, ~]
+          tags:
+              - { name: sonata.admin, manager_type: orm, label: Tags }
+          public: true
+
+#    sonata.page.admin.page:
+#        class: Sonata\PageBundle\Admin\PageAdmin
+#        arguments: [~, Application\Sonata\PageBundle\Entity\Page, ~]
+#        tags:
+#            - { name: sonata.admin, manager_type: orm, label: Page}
+#        call

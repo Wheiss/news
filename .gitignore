@@ -51,3 +51,7 @@
 # Embedded web-server pid file
 /.web-server-pid
 .idea
+node_modules
+/web/public/images/uploaded
+uploaded
+uploaded

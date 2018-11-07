@@ -1,0 +1,45 @@
+.content {
+    width: 768px;
+    margin: auto;
+}
+
+.m-b {
+    margin-bottom: 10px;
+}
+
+.table {
+    width: 768px;
+}
+
+.filter-btn {
+    float: right;
+}
+
+.image-container {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    float: left;
+    background-color: #999;
+    margin: 0 10px 10px 0;
+}
+
+.image {
+    width: 300px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.social-button {
+    width: 32px;
+    display: inline-block;
+    margin: 5px;
+}
